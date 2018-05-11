@@ -49,13 +49,20 @@ class SunCalcTest < Minitest::Test
   end
 
   def test_moon_times
+    expected_events_and_times = {
+      lunar_noon: '2013-03-04T03:17:14Z',
+      nadir:      '2013-03-04T15:52:51Z',
+      moonrise:   '2013-03-04T23:54:29Z',
+      moonset:    '2013-03-04T07:47:58Z'
+    }
     moon_times = SunCalc.moon_times(
       Time.iso8601('2013-03-04T00:00:00Z'), @lat, @lng
     )
-    expected_moon_rise_time = Time.iso8601('2013-03-04T23:54:29Z')
-    expected_moon_set_time = Time.iso8601('2013-03-04T07:47:58Z')
-    assert_equal moon_times[:moonrise].to_i, expected_moon_rise_time.to_i
-    assert_equal moon_times[:moonset].to_i, expected_moon_set_time.to_i
+    assert_equal moon_times.length, expected_events_and_times.length
+    moon_times.each do |event, time|
+      expected_time = Time.iso8601(expected_events_and_times[event])
+      assert_equal time.to_i, expected_time.to_i
+    end
   end
 
   def test_moon_illumination

@@ -98,10 +98,12 @@ class SunCalc
     hc = 0.133 * ONE_RADIAN
     h0 = SunCalc.moon_position(t, lat, lng)[:altitude] - hc
     ye = 0
+    max = nil
+    min = nil
     rise = nil
     set = nil
     # Iterate in 2-hour steps checking if a 3-point quadratic curve crosses zero
-    # (which means rise or set).
+    # (which means rise or set). Assumes x values -1, 0, +1.
     (1...24).step(2).each do |i|
       h1 = SunCalc.moon_position(hours_later(t, i), lat, lng)[:altitude] - hc
       h2 = SunCalc.moon_position(
@@ -115,6 +117,8 @@ class SunCalc
       roots = 0
       x1 = 0
       x2 = 0
+      min = i + xe if xe.abs <= 1 && ye < 0
+      max = i + xe if xe.abs <= 1 && ye > 0
       if d >= 0
         dx = Math.sqrt(d) / (a.abs * 2)
         x1 = xe - dx
@@ -133,10 +137,12 @@ class SunCalc
         rise = i + (ye < 0 ? x2 : x1)
         set = i + (ye < 0 ? x1 : x2)
       end
-      break if rise && set
+      break if rise && set && min && max
       h0 = h2
     end
     {}.tap do |result|
+      result[:nadir] = hours_later(t, min) if min
+      result[:lunar_noon] = hours_later(t, max) if max
       result[:moonrise] = hours_later(t, rise) if rise
       result[:moonset] = hours_later(t, set) if set
       result[ye > 0 ? :always_up : :always_down] = true if !rise && !set
