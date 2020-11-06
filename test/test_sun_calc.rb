@@ -34,11 +34,7 @@ class SunCalcTest < Minitest::Test
       golden_hour_start: '2013-03-05T15:02:52Z'
     }
     sun_times = SunCalc.sun_times(@date, @lat, @lng)
-    assert_equal sun_times.length, expected_events_and_times.length
-    sun_times.each do |event, time|
-      expected_time = Time.iso8601(expected_events_and_times[event])
-      assert_equal time.to_i, expected_time.to_i
-    end
+    assert_equal sun_times.transform_values(&:iso8601), expected_events_and_times
   end
 
   def test_moon_position
@@ -58,11 +54,7 @@ class SunCalcTest < Minitest::Test
     moon_times = SunCalc.moon_times(
       Time.iso8601('2013-03-04T00:00:00Z'), @lat, @lng
     )
-    assert_equal moon_times.length, expected_events_and_times.length
-    moon_times.each do |event, time|
-      expected_time = Time.iso8601(expected_events_and_times[event])
-      assert_equal time.to_i, expected_time.to_i
-    end
+    assert_equal moon_times.transform_values(&:iso8601), expected_events_and_times
   end
 
   def test_moon_illumination
