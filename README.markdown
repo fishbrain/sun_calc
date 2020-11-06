@@ -1,6 +1,6 @@
 # sun\_calc
 
-[![Build Status](https://travis-ci.com/fishbrain/sun_calc.svg?token=AahQSHRoAYGzTHE366Lz&branch=master)](https://travis-ci.com/fishbrain/sun_calc)
+[![CI Status](https://github.com/fishbrain/sun_calc/workflows/CI/badge.svg)](https://github.com/fishbrain/sun_calc/actions)
 
 A Ruby library, translated from the
 [SunCalc](https://github.com/mourner/suncalc) JavaScript library, for
