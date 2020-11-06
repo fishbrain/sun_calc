@@ -1,5 +1,12 @@
+require:
+  - rubocop-minitest
+  - rubocop-packaging
+  - rubocop-performance
+  - rubocop-rake
+
 AllCops:
-  TargetRubyVersion: 2.1
+  NewCops: enable
+  TargetRubyVersion: 2.4
 
 Metrics/AbcSize:
   Enabled: false
@@ -22,5 +29,14 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
   Enabled: false
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+Gemspec/RequiredRubyVersion:
   Enabled: false

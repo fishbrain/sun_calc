@@ -6,7 +6,7 @@ require 'sun_calc'
 
 now = Time.now.utc
 
-params = Array.new(10_000).map do
+params = Array.new(10_000) do
   lat = rand * 180 - 90
   lng = rand * 360 - 180
   time = now - rand * 3600 * 24 * 365 * 10

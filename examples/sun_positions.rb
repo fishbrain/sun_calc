@@ -10,8 +10,7 @@ now = Time.now.utc
   date = now + hour * 3600
   altitude = SunCalc.sun_position(date, lat, lng)[:altitude]
   normalized_altitude = (altitude + Math::PI / 2) / Math::PI
-  puts "#{date}: " \
-       "#{'*' * (normalized_altitude * 100).to_i} (#{altitude})"
+  puts "#{date}: #{'*' * (normalized_altitude * 100).to_i} (#{altitude}))"
 end
 
-puts "\n--------- AXIS --------: [-PI/2 #{'-' * 42} 0 #{'-' * 42} PI/2]"
+puts " -------- AXIS ------- : [-PI/2 #{'-' * 42} 0 #{'-' * 42} PI/2]"

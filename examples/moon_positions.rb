@@ -15,4 +15,4 @@ now = Time.now.utc
        "#{'*' * (normalized_altitude * 100).to_i} (#{altitude}) (#{phase})"
 end
 
-puts "\n--------- AXIS --------: [-PI/2 #{'-' * 42} 0 #{'-' * 42} PI/2]"
+puts " -------- AXIS ------- : [-PI/2 #{'-' * 42} 0 #{'-' * 42} PI/2]"

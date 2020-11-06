@@ -113,7 +113,7 @@ class SunCalc
       b = (h2 - h0) / 2
       xe = -b / (2 * a)
       ye = (a * xe + b) * xe + h1
-      d = b * b - 4 * a * h1
+      d = b**2 - 4 * a * h1
       roots = 0
       x1 = 0
       x2 = 0
@@ -127,13 +127,14 @@ class SunCalc
         roots += 1 if x2.abs <= 1
         x1 = x2 if x1 < -1
       end
-      if roots == 1
+      case roots
+      when 1
         if h0 < 0
           rise = i + x1
         else
           set = i + x1
         end
-      elsif roots == 2
+      when 2
         rise = i + (ye < 0 ? x2 : x1)
         set = i + (ye < 0 ? x1 : x2)
       end

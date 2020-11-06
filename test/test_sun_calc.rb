@@ -18,19 +18,19 @@ class SunCalcTest < Minitest::Test
 
   def test_sun_times
     expected_events_and_times = {
-      solar_noon:        '2013-03-05T10:10:57Z',
-      nadir:             '2013-03-04T22:10:57Z',
-      sunrise:           '2013-03-05T04:34:56Z',
-      sunset:            '2013-03-05T15:46:57Z',
-      sunrise_end:       '2013-03-05T04:38:19Z',
-      sunset_start:      '2013-03-05T15:43:34Z',
-      dawn:              '2013-03-05T04:02:17Z',
-      dusk:              '2013-03-05T16:19:36Z',
-      nautical_dawn:     '2013-03-05T03:24:31Z',
-      nautical_dusk:     '2013-03-05T16:57:22Z',
-      night_end:         '2013-03-05T02:46:17Z',
-      night_start:       '2013-03-05T17:35:36Z',
-      golden_hour_end:   '2013-03-05T05:19:01Z',
+      solar_noon: '2013-03-05T10:10:57Z',
+      nadir: '2013-03-04T22:10:57Z',
+      sunrise: '2013-03-05T04:34:56Z',
+      sunset: '2013-03-05T15:46:57Z',
+      sunrise_end: '2013-03-05T04:38:19Z',
+      sunset_start: '2013-03-05T15:43:34Z',
+      dawn: '2013-03-05T04:02:17Z',
+      dusk: '2013-03-05T16:19:36Z',
+      nautical_dawn: '2013-03-05T03:24:31Z',
+      nautical_dusk: '2013-03-05T16:57:22Z',
+      night_end: '2013-03-05T02:46:17Z',
+      night_start: '2013-03-05T17:35:36Z',
+      golden_hour_end: '2013-03-05T05:19:01Z',
       golden_hour_start: '2013-03-05T15:02:52Z'
     }
     sun_times = SunCalc.sun_times(@date, @lat, @lng)
@@ -51,9 +51,9 @@ class SunCalcTest < Minitest::Test
   def test_moon_times
     expected_events_and_times = {
       lunar_noon: '2013-03-04T03:17:14Z',
-      nadir:      '2013-03-04T15:52:51Z',
-      moonrise:   '2013-03-04T23:54:29Z',
-      moonset:    '2013-03-04T07:47:58Z'
+      nadir: '2013-03-04T15:52:51Z',
+      moonrise: '2013-03-04T23:54:29Z',
+      moonset: '2013-03-04T07:47:58Z'
     }
     moon_times = SunCalc.moon_times(
       Time.iso8601('2013-03-04T00:00:00Z'), @lat, @lng
