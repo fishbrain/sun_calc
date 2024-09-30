@@ -12,6 +12,7 @@ class SunCalcTest < Minitest::Test
 
   def test_sun_position
     sun_position = SunCalc.sun_position(@date, @lat, @lng)
+
     assert_in_delta sun_position[:azimuth], -2.5003175907168385, 1E-15
     assert_in_delta sun_position[:altitude], -0.7000406838781611, 1E-15
   end
@@ -34,11 +35,13 @@ class SunCalcTest < Minitest::Test
       golden_hour_start: '2013-03-05T15:02:52Z'
     }
     sun_times = SunCalc.sun_times(@date, @lat, @lng)
+
     assert_equal sun_times.transform_values(&:iso8601), expected_events_and_times
   end
 
   def test_moon_position
     moon_position = SunCalc.moon_position(@date, @lat, @lng)
+
     assert_in_delta moon_position[:azimuth], -0.9783999522438226, 1E-15
     assert_in_delta moon_position[:altitude], 0.014551482243892251, 1E-15
     assert_in_delta moon_position[:distance], 364_121.37256256194, 1E-15
@@ -54,11 +57,13 @@ class SunCalcTest < Minitest::Test
     moon_times = SunCalc.moon_times(
       Time.iso8601('2013-03-04T00:00:00Z'), @lat, @lng
     )
+
     assert_equal moon_times.transform_values(&:iso8601), expected_events_and_times
   end
 
   def test_moon_illumination
     moon_illumination = SunCalc.moon_illumination(@date)
+
     assert_in_delta moon_illumination[:fraction], 0.4848068202456373, 1E-15
     assert_in_delta moon_illumination[:phase], 0.7548368838538762, 1E-15
     assert_in_delta moon_illumination[:angle], 1.6732942678578346, 1E-15
