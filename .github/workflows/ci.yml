@@ -9,7 +9,7 @@ jobs:
     name: Ruby ${{ matrix.ruby }} CI
     steps:
       - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@7372622e62b60b3cb750dcd2b9e32c247ffec26a # v1.302.0
         with:
           ruby-version: ${{ matrix.ruby }}
       - run: bundle install
